@@ -1,0 +1,151 @@
+2026-02-02 13:58:44 [INFO] [DashboardServer] [T140737470023488] Starting dashboard server at http://0.0.0.0:8080
+2026-02-02 13:58:44 [werkzeug] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.18.0.3:8080
+2026-02-02 13:58:44 [werkzeug] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.18.0.3:8080
+2026-02-02 13:58:44 [werkzeug] Press CTRL+C to quit
+2026-02-02 13:58:44 [werkzeug] Press CTRL+C to quit
+2026-02-02 13:58:44 [werkzeug]  * Restarting with stat
+2026-02-02 13:58:44 [werkzeug]  * Restarting with stat
+2026-02-02 13:58:47 [INFO] [DashboardServer] [T140737470023488] Starting dashboard server at http://0.0.0.0:8080
+2026-02-02 13:58:47 [werkzeug]  * Debugger is active!
+2026-02-02 13:58:47 [werkzeug]  * Debugger is active!
+2026-02-02 13:58:47 [werkzeug]  * Debugger PIN: 989-778-430
+2026-02-02 13:58:47 [werkzeug]  * Debugger PIN: 989-778-430
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET / HTTP/1.1" 200 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET / HTTP/1.1" 200 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "[36mGET /static/dashboard.css HTTP/1.1[0m" 304 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "[36mGET /static/dashboard.css HTTP/1.1[0m" 304 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "[36mGET /static/certora-logo.svg HTTP/1.1[0m" 304 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "[36mGET /static/certora-logo.svg HTTP/1.1[0m" 304 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /static/dashboard.js HTTP/1.1" 200 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /static/dashboard.js HTTP/1.1" 200 -
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] GET /api/scan - Starting scan data retrieval (remote mode)
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] No latest_scan file found
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Latest scan snapshot: False
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] No scan found, performing initial scan
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /api/scan/scan-progress?_=1770040819420 HTTP/1.1" 200 -
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] Starting project scan...
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /api/scan/scan-progress?_=1770040819420 HTTP/1.1" 200 -
+2026-02-02 14:00:19 [WARNING] [ConfParser] [T140737354135232] Certora directory not found: /project/certora
+2026-02-02 14:00:19 [WARNING] [ProjectScanner] [T140737354135232] No conf files found in certora/ or src/certora/ directories
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] No latest_scan file found
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] Collecting source file hashes for caching...
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] Collected hashes for 0 source files
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] Saved scan snapshot to /project/.certora_internal/local_dashboard/1770040819
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] No EVM confs found, skipping AST generation
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] No rule statuses file found (local mode)
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] Scan complete in 0.01s - Found 0 confs, 0 specs
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Initial scan complete - found 0 confs, 0 specs
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Syncing cloud statuses after initial scan (remote mode)
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] Syncing statuses from cloud (remote mode)...
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] Loaded scan snapshot from /project/.certora_internal/local_dashboard/1770040819
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] Current snapshot has 0 confs, 0 specs
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] Calling update_statuses_from_cloud (remote mode)
+2026-02-02 14:00:19 [INFO] [CloudSync] [T140737354135232] Starting cloud status update (remote mode)
+2026-02-02 14:00:19 [INFO] [CloudSync] [T140737354135232] Parsing remote jobs from /project
+2026-02-02 14:00:19 [INFO] [CloudSync] [T140737354135232] No remote jobs file found: /project/.certora_internal/.certora_remote_jobs.json
+2026-02-02 14:00:19 [INFO] [CloudSync] [T140737354135232] Found 0 jobs (remote mode)
+2026-02-02 14:00:19 [INFO] [CloudSync] [T140737354135232] No jobs found (remote mode)
+2026-02-02 14:00:19 [INFO] [ProjectScanner] [T140737354135232] update_statuses_from_cloud returned 0 statuses
+2026-02-02 14:00:19 [WARNING] [ProjectScanner] [T140737354135232] No statuses to save
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Cloud sync complete after initial scan (remote mode)
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] No rule statuses file found (remote mode)
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Retrieved 0 rule statuses (remote mode)
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] No all_rule_statuses.json file found
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Retrieved history for 0 rules (0 total jobs)
+2026-02-02 14:00:19 [INFO] [Storage] [T140737354135232] No selected_user_runs.json file found
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Retrieved user selections for 0 rules
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Found 0 CEX analyses
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Found 0 timeouter runs
+2026-02-02 14:00:19 [INFO] [DashboardServer] [T140737354135232] Last cloud sync timestamp (remote): 0
+2026-02-02 14:00:19 [INFO] [ASTManager] [T140737354135232] No asts.json found at /project/.certora_internal/local_dashboard/1770040819/asts.json
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /api/scan?mode=remote&allUsers=true&lookbackDays=30 HTTP/1.1" 200 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "GET /api/scan?mode=remote&allUsers=true&lookbackDays=30 HTTP/1.1" 200 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-02 14:00:19 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-02 14:00:20 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:20] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:20 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:20] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:20 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:20] "GET /api/scan/scan-progress?_=1770040820421 HTTP/1.1" 200 -
+2026-02-02 14:00:20 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:20] "GET /api/scan/scan-progress?_=1770040820421 HTTP/1.1" 200 -
+2026-02-02 14:00:21 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:21] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:21 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:21] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:21 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:21] "GET /api/scan/scan-progress?_=1770040821422 HTTP/1.1" 200 -
+2026-02-02 14:00:21 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:21] "GET /api/scan/scan-progress?_=1770040821422 HTTP/1.1" 200 -
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] GET /api/scan - Starting scan data retrieval (remote mode)
+2026-02-02 14:00:21 [INFO] [Storage] [T140737337349824] Loaded scan snapshot from /project/.certora_internal/local_dashboard/1770040819
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] Latest scan snapshot: True
+2026-02-02 14:00:21 [INFO] [Storage] [T140737337349824] No rule statuses file found (remote mode)
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] Retrieved 0 rule statuses (remote mode)
+2026-02-02 14:00:21 [INFO] [Storage] [T140737337349824] No all_rule_statuses.json file found
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] Retrieved history for 0 rules (0 total jobs)
+2026-02-02 14:00:21 [INFO] [Storage] [T140737337349824] No selected_user_runs.json file found
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] Retrieved user selections for 0 rules
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] Found 0 CEX analyses
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] Found 0 timeouter runs
+2026-02-02 14:00:21 [INFO] [DashboardServer] [T140737337349824] Last cloud sync timestamp (remote): 0
+2026-02-02 14:00:21 [INFO] [ASTManager] [T140737337349824] No asts.json found at /project/.certora_internal/local_dashboard/1770040819/asts.json
+2026-02-02 14:00:21 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:21] "GET /api/scan?mode=remote&allUsers=true&lookbackDays=30 HTTP/1.1" 200 -
+2026-02-02 14:00:21 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:21] "GET /api/scan?mode=remote&allUsers=true&lookbackDays=30 HTTP/1.1" 200 -
+2026-02-02 14:00:22 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:22] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:22 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:22] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:22 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:22] "GET /api/scan/scan-progress?_=1770040822422 HTTP/1.1" 200 -
+2026-02-02 14:00:22 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:22] "GET /api/scan/scan-progress?_=1770040822422 HTTP/1.1" 200 -
+2026-02-02 14:00:23 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:23] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:23 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:23] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:23 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:23] "GET /api/scan/scan-progress?_=1770040823422 HTTP/1.1" 200 -
+2026-02-02 14:00:23 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:23] "GET /api/scan/scan-progress?_=1770040823422 HTTP/1.1" 200 -
+2026-02-02 14:00:24 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:24] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:24 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:24] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:24 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:24] "GET /api/scan/scan-progress?_=1770040824421 HTTP/1.1" 200 -
+2026-02-02 14:00:24 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:24] "GET /api/scan/scan-progress?_=1770040824421 HTTP/1.1" 200 -
+2026-02-02 14:00:25 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:25] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:25 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:25] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:25 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:25] "GET /api/scan/scan-progress?_=1770040825421 HTTP/1.1" 200 -
+2026-02-02 14:00:25 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:25] "GET /api/scan/scan-progress?_=1770040825421 HTTP/1.1" 200 -
+2026-02-02 14:00:26 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:26] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:26 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:26] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:26 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:26] "GET /api/scan/scan-progress?_=1770040826422 HTTP/1.1" 200 -
+2026-02-02 14:00:26 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:26] "GET /api/scan/scan-progress?_=1770040826422 HTTP/1.1" 200 -
+2026-02-02 14:00:27 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:27] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:27 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:27] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:27 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:27] "GET /api/scan/scan-progress?_=1770040827422 HTTP/1.1" 200 -
+2026-02-02 14:00:27 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:27] "GET /api/scan/scan-progress?_=1770040827422 HTTP/1.1" 200 -
+2026-02-02 14:00:28 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:28] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:28 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:28] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:28 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:28] "GET /api/scan/scan-progress?_=1770040828423 HTTP/1.1" 200 -
+2026-02-02 14:00:28 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:28] "GET /api/scan/scan-progress?_=1770040828423 HTTP/1.1" 200 -
+2026-02-02 14:00:29 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:29] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:29 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:29] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:29 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:29] "GET /api/scan/scan-progress?_=1770040829422 HTTP/1.1" 200 -
+2026-02-02 14:00:29 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:29] "GET /api/scan/scan-progress?_=1770040829422 HTTP/1.1" 200 -
+2026-02-02 14:00:30 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:30] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:30 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:30] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:30 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:30] "GET /api/scan/scan-progress?_=1770040830422 HTTP/1.1" 200 -
+2026-02-02 14:00:30 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:30] "GET /api/scan/scan-progress?_=1770040830422 HTTP/1.1" 200 -
+2026-02-02 14:00:31 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:31] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:31 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:31] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:31 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:31] "GET /api/scan/scan-progress?_=1770040831423 HTTP/1.1" 200 -
+2026-02-02 14:00:31 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:31] "GET /api/scan/scan-progress?_=1770040831423 HTTP/1.1" 200 -
+2026-02-02 14:00:32 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:32] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:32 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:32] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:32 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:32] "GET /api/scan/scan-progress?_=1770040832422 HTTP/1.1" 200 -
+2026-02-02 14:00:32 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:32] "GET /api/scan/scan-progress?_=1770040832422 HTTP/1.1" 200 -
+2026-02-02 14:00:33 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:33] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:33 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:33] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:33 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:33] "GET /api/scan/scan-progress?_=1770040833422 HTTP/1.1" 200 -
+2026-02-02 14:00:33 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:33] "GET /api/scan/scan-progress?_=1770040833422 HTTP/1.1" 200 -
+2026-02-02 14:00:34 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:34] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:34 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:34] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:34 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:34] "GET /api/scan/scan-progress?_=1770040834422 HTTP/1.1" 200 -
+2026-02-02 14:00:34 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:34] "GET /api/scan/scan-progress?_=1770040834422 HTTP/1.1" 200 -
+2026-02-02 14:00:35 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:35] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:35 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:35] "GET /api/scan/progress?mode=remote HTTP/1.1" 200 -
+2026-02-02 14:00:35 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:35] "GET /api/scan/scan-progress?_=1770040835422 HTTP/1.1" 200 -
+2026-02-02 14:00:35 [werkzeug] 192.168.65.1 - - [02/Feb/2026 14:00:35] "GET /api/scan/scan-progress?_=1770040835422 HTTP/1.1" 200 -

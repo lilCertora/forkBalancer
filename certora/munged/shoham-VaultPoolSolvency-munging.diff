@@ -1,0 +1,291 @@
+diff --git a/pkg/vault/contracts/BasePoolMath.sol b/pkg/vault/contracts/BasePoolMath.sol
+index 1923a863..6a68e5c1 100644
+--- a/pkg/vault/contracts/BasePoolMath.sol
++++ b/pkg/vault/contracts/BasePoolMath.sol
+@@ -145,8 +145,16 @@ library BasePoolMath {
+ 
+         // Create a new array to hold the updated balances after the addition.
+         uint256[] memory newBalances = new uint256[](numTokens);
++        //munged by CERTORA: initialization to 0 for static analysis
++        for (uint256 i = 0; i < numTokens; ++i) {
++            newBalances[i] = 0;
++        }
+         // Create a new array to hold the swap fee amount for each token.
+         swapFeeAmounts = new uint256[](numTokens);
++        //munged by CERTORA: initialization to 0 for static analysis
++        for (uint256 i = 0; i < numTokens; ++i) {
++            swapFeeAmounts[i] = 0;
++        }
+ 
+         // Loop through each token, updating the balance with the added amount.
+         for (uint256 i = 0; i < numTokens; ++i) {
+@@ -257,6 +265,10 @@ library BasePoolMath {
+ 
+         // Create swap fees amount array and set the single fee we charge.
+         swapFeeAmounts = new uint256[](currentBalances.length);
++        //munged by CERTORA: initialization to 0 for static analysis
++        for (uint256 i = 0; i < swapFeeAmounts.length; ++i) {
++            swapFeeAmounts[i] = 0;
++        }
+         swapFeeAmounts[tokenInIndex] = fee;
+ 
+         // Return the total amount of input token needed, including the swap fee.
+@@ -287,6 +299,10 @@ library BasePoolMath {
+ 
+         // Create a new array to hold the updated balances.
+         uint256[] memory newBalances = new uint256[](numTokens);
++        //munged by CERTORA: initialization to 0 for static analysis
++        for (uint256 i = 0; i < newBalances.length; ++i) {
++            newBalances[i] = 0;
++        }
+ 
+         // Copy currentBalances to newBalances.
+         for (uint256 i = 0; i < numTokens; ++i) {
+@@ -327,6 +343,10 @@ library BasePoolMath {
+ 
+         // Create swap fees amount array and set the single fee we charge.
+         swapFeeAmounts = new uint256[](numTokens);
++        //munged by CERTORA: initialization to 0 for static analysis
++        for (uint256 i = 0; i < swapFeeAmounts.length; ++i) {
++            swapFeeAmounts[i] = 0;
++        }
+         swapFeeAmounts[tokenOutIndex] = fee;
+ 
+         // Calculate the amount of BPT to burn. This is done by multiplying the total supply by the ratio of the
+@@ -390,6 +410,10 @@ library BasePoolMath {
+ 
+         // Create swap fees amount array and set the single fee we charge.
+         swapFeeAmounts = new uint256[](currentBalances.length);
++        //munged by CERTORA: initialization to 0 for static analysis
++        for (uint256 i = 0; i < swapFeeAmounts.length; ++i) {
++            swapFeeAmounts[i] = 0;
++        }
+         swapFeeAmounts[tokenOutIndex] = fee;
+ 
+         // Return the net amount after subtracting the fee.
+diff --git a/pkg/vault/contracts/Vault.sol b/pkg/vault/contracts/Vault.sol
+index 913ec985..e7048982 100644
+--- a/pkg/vault/contracts/Vault.sol
++++ b/pkg/vault/contracts/Vault.sol
+@@ -861,12 +861,20 @@ contract Vault is IVaultMain, VaultCommon, Proxy {
+         LiquidityLocals memory locals;
+         locals.numTokens = poolData.tokens.length;
+         amountsOutRaw = new uint256[](locals.numTokens);
++        //munged by CERTORA: initialization to 0 for static analysis
++        for (uint256 i = 0; i < amountsOutRaw.length; ++i) {
++            amountsOutRaw[i] = 0;
++        }
+         // `swapFeeAmounts` stores scaled18 amounts first, and is then reused to store raw amounts.
+         uint256[] memory swapFeeAmounts;
+ 
+         if (params.kind == RemoveLiquidityKind.PROPORTIONAL) {
+             bptAmountIn = params.maxBptAmountIn;
+             swapFeeAmounts = new uint256[](locals.numTokens);
++            //munged by CERTORA: initialization to 0 for static analysis
++            for (uint256 i = 0; i < swapFeeAmounts.length; ++i) {
++                swapFeeAmounts[i] = 0;
++            }
+             amountsOutScaled18 = BasePoolMath.computeProportionalAmountsOut(
+                 poolData.balancesLiveScaled18,
+                 _totalSupply(params.pool),
+diff --git a/pkg/vault/contracts/VaultExtension.sol b/pkg/vault/contracts/VaultExtension.sol
+index 2804daf9..552edb34 100644
+--- a/pkg/vault/contracts/VaultExtension.sol
++++ b/pkg/vault/contracts/VaultExtension.sol
+@@ -871,7 +871,8 @@ contract VaultExtension is IVaultExtension, VaultCommon, Proxy {
+             revert CannotReceiveEth();
+         }
+ 
+-        _fallback();
++        // munged by CERTORA: caused memory analysis failure
++        // _fallback();
+     }
+ 
+     /*******************************************************************************
+diff --git a/pkg/vault/contracts/lib/PoolDataLib.sol b/pkg/vault/contracts/lib/PoolDataLib.sol
+index 9a096caa..1aaad4eb 100644
+--- a/pkg/vault/contracts/lib/PoolDataLib.sol
++++ b/pkg/vault/contracts/lib/PoolDataLib.sol
+@@ -30,62 +30,72 @@ library PoolDataLib {
+ 
+     function load(
+         PoolData memory poolData,
+-        mapping(uint256 tokenIndex => bytes32 packedTokenBalance) storage poolTokenBalances,
++        mapping(uint => bytes32) storage poolTokenBalances,
+         PoolConfigBits poolConfigBits,
+-        mapping(IERC20 poolToken => TokenInfo tokenInfo) storage poolTokenInfo,
++        mapping(IERC20 => TokenInfo) storage poolTokenInfo,
+         IERC20[] storage tokens,
+         Rounding roundingDirection
+     ) internal view {
+-        uint256 numTokens = tokens.length;
+-
+         poolData.poolConfigBits = poolConfigBits;
+         poolData.tokens = tokens;
+-        poolData.tokenInfo = new TokenInfo[](numTokens);
+-        poolData.balancesRaw = new uint256[](numTokens);
+-        poolData.balancesLiveScaled18 = new uint256[](numTokens);
+-        poolData.decimalScalingFactors = PoolConfigLib.getDecimalScalingFactors(poolData.poolConfigBits, numTokens);
+-        poolData.tokenRates = new uint256[](numTokens);
+-
+-        bool poolSubjectToYieldFees = poolData.poolConfigBits.isPoolInitialized() &&
+-            poolData.poolConfigBits.getAggregateYieldFeePercentage() > 0 &&
+-            poolData.poolConfigBits.isPoolInRecoveryMode() == false;
++        uint256 numTokens = poolData.tokens.length;
+ 
++        TokenInfo[] memory tokenInfo = new TokenInfo[](numTokens);
+         for (uint256 i = 0; i < numTokens; ++i) {
+-            TokenInfo memory tokenInfo = poolTokenInfo[poolData.tokens[i]];
+-            bytes32 packedBalance = poolTokenBalances[i];
+-
+-            poolData.tokenInfo[i] = tokenInfo;
+-            poolData.tokenRates[i] = getTokenRate(tokenInfo);
+-            updateRawAndLiveBalance(poolData, i, packedBalance.getBalanceRaw(), roundingDirection);
+-
+-            // If there are no yield fees, we can save gas by skipping to the next token now.
+-            if (poolSubjectToYieldFees == false) {
+-                continue;
+-            }
+-
+-            // `poolData` already has live balances computed from raw balances according to the token rates and the
+-            // given rounding direction. Charging a yield fee changes the raw balance, in which case the safest and
+-            // most numerically precise way to adjust the live balance is to simply repeat the scaling (hence the
+-            // second call below).
++            tokenInfo[i] = poolTokenInfo[poolData.tokens[i]];
++        }
++        poolData.tokenInfo = tokenInfo;
+ 
+-            // The Vault actually guarantees that a token with paysYieldFees set is a WITH_RATE token, so technically
+-            // we could just check the flag, but we don't want to introduce that dependency for a slight gas savings.
+-            bool tokenSubjectToYieldFees = tokenInfo.paysYieldFees && tokenInfo.tokenType == TokenType.WITH_RATE;
++        uint256[] memory balancesRaw = new uint256[](numTokens);
++        for (uint256 i = 0; i < numTokens; ++i) {
++            balancesRaw[i] = poolTokenBalances[i].getBalanceRaw();
++        }
++        poolData.balancesRaw = balancesRaw;
+ 
+-            // Do not charge yield fees before the pool is initialized, or in recovery mode.
+-            if (tokenSubjectToYieldFees) {
+-                uint256 aggregateYieldFeePercentage = poolData.poolConfigBits.getAggregateYieldFeePercentage();
+-                uint256 balanceRaw = poolData.balancesRaw[i];
++        uint256[] memory decimalScalingFactors = PoolConfigLib.getDecimalScalingFactors(poolConfigBits, numTokens);
++        poolData.decimalScalingFactors = decimalScalingFactors;
+ 
+-                uint256 aggregateYieldFeeAmountRaw = _computeYieldFeesDue(
+-                    poolData,
+-                    packedBalance.getBalanceDerived(),
+-                    i,
+-                    aggregateYieldFeePercentage
+-                );
++        uint256[] memory tokenRates = new uint256[](numTokens);
++        for (uint256 i = 0; i < numTokens; ++i) {
++            tokenRates[i] = getTokenRate(tokenInfo[i]);
++        }
++        poolData.tokenRates = tokenRates;
+ 
+-                if (aggregateYieldFeeAmountRaw > 0) {
+-                    updateRawAndLiveBalance(poolData, i, balanceRaw - aggregateYieldFeeAmountRaw, roundingDirection);
++        uint256[] memory balancesLiveScaled18 = new uint256[](numTokens);
++        for (uint256 i = 0; i < numTokens; ++i) {
++            balancesLiveScaled18[i] = getLiveBalance(poolData, i, balancesRaw[i], roundingDirection);
++        }
++        poolData.balancesLiveScaled18 = balancesLiveScaled18;
++
++        bool poolSubjectToYieldFees = poolConfigBits.isPoolInitialized() &&
++            poolConfigBits.getAggregateYieldFeePercentage() > 0 &&
++            poolConfigBits.isPoolInRecoveryMode() == false;
++
++        if (poolSubjectToYieldFees) {
++            for (uint256 i = 0; i < numTokens; ++i) {
++                TokenInfo memory tokenInfoI = tokenInfo[i];
++
++                // `poolData` already has live balances computed from raw balances according to the token rates and the
++                // given rounding direction. Charging a yield fee changes the raw balance, in which case the safest and
++                // most numerically precise way to adjust the live balance is to simply repeat the scaling (hence the
++                // second call below).
++
++                // The Vault actually guarantees that a token with paysYieldFees set is a WITH_RATE token, so technically
++                // we could just check the flag, but we don't want to introduce that dependency for a slight gas savings.
++                bool tokenSubjectToYieldFees = tokenInfoI.paysYieldFees && tokenInfoI.tokenType == TokenType.WITH_RATE;
++
++                // Do not charge yield fees before the pool is initialized, or in recovery mode.
++                if (tokenSubjectToYieldFees) {
++                    uint256 aggregateYieldFeeAmountRaw = _computeYieldFeesDue(
++                        poolData,
++                        poolTokenBalances[i].getBalanceDerived(),
++                        i,
++                        poolData.poolConfigBits.getAggregateYieldFeePercentage()
++                    );
++
++                    if (aggregateYieldFeeAmountRaw > 0) {
++                        updateRawAndLiveBalance(poolData, i, poolData.balancesRaw[i] - aggregateYieldFeeAmountRaw, roundingDirection);
++                    }
+                 }
+             }
+         }
+@@ -93,8 +103,8 @@ library PoolDataLib {
+ 
+     function syncPoolBalancesAndFees(
+         PoolData memory poolData,
+-        mapping(uint256 tokenIndex => bytes32 packedTokenBalance) storage poolTokenBalances,
+-        mapping(IERC20 token => bytes32 packedFeeAmounts) storage poolAggregateProtocolFeeAmounts
++        mapping(uint256 => bytes32) storage poolTokenBalances,
++        mapping(IERC20 => bytes32) storage poolAggregateProtocolFeeAmounts
+     ) internal {
+         uint256 numTokens = poolData.balancesRaw.length;
+ 
+@@ -130,7 +140,7 @@ library PoolDataLib {
+      */
+     function reloadBalancesAndRates(
+         PoolData memory poolData,
+-        mapping(uint256 tokenIndex => bytes32 packedTokenBalance) storage poolTokenBalances,
++        mapping(uint256 => bytes32) storage poolTokenBalances,
+         Rounding roundingDirection
+     ) internal view {
+         uint256 numTokens = poolData.tokens.length;
+@@ -161,26 +171,39 @@ library PoolDataLib {
+         }
+     }
+ 
+-    function updateRawAndLiveBalance(
+-        PoolData memory poolData,
++    function getLiveBalance(
++        PoolData memory poolData, 
+         uint256 tokenIndex,
+         uint256 newRawBalance,
+         Rounding roundingDirection
+-    ) internal pure {
+-        poolData.balancesRaw[tokenIndex] = newRawBalance;
+-
++    ) internal pure returns (uint256) {
+         function(uint256, uint256, uint256) internal pure returns (uint256) _upOrDown = roundingDirection ==
+             Rounding.ROUND_UP
+             ? ScalingHelpers.toScaled18ApplyRateRoundUp
+             : ScalingHelpers.toScaled18ApplyRateRoundDown;
+ 
+-        poolData.balancesLiveScaled18[tokenIndex] = _upOrDown(
++        return _upOrDown(
+             newRawBalance,
+             poolData.decimalScalingFactors[tokenIndex],
+             poolData.tokenRates[tokenIndex]
+         );
+     }
+ 
++    function updateRawAndLiveBalance(
++        PoolData memory poolData,
++        uint256 tokenIndex,
++        uint256 newRawBalance,
++        Rounding roundingDirection
++    ) internal pure {
++        poolData.balancesRaw[tokenIndex] = newRawBalance;
++        poolData.balancesLiveScaled18[tokenIndex] = getLiveBalance(
++            poolData, 
++            tokenIndex, 
++            newRawBalance, 
++            roundingDirection
++        );
++    }
++
+     // solhint-disable-next-line private-vars-leading-underscore
+     function _computeYieldFeesDue(
+         PoolData memory poolData,

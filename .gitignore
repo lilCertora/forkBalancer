@@ -54,3 +54,4 @@ slither/
 # Fuzz tests
 crytic-export/
 medusa-corpus/
+certora_archive/
